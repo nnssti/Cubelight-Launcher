@@ -30,7 +30,7 @@ We believe in full transparency with our users. Here are the current known issue
 
 ## 🚀 Getting Started
 
-1. Download the latest release from the [Releases](https://github.com/YOUR_USERNAME/Cubelight-Launcher/releases) section.
+1. Download the latest release from the [Releases](https://github.com/nnssti/Cubelight-Launcher/releases) section.
 2. Launch `Cubelight Launcher`.
 3. Choose **Create Local Profile** to jump straight into offline gameplay, or test the Microsoft sign-in option.
 4. Select your desired Minecraft version, install your favorite mods, and launch the game!
