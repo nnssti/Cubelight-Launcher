@@ -46,4 +46,4 @@ We believe in full transparency with our users. Here are the current known issue
 
 ## 📄 License & Attribution
 
-Created and developed by **opencode**.
+Created and developed by **opencode**
