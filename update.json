@@ -1,0 +1,5 @@
+{
+  "version": "1.2.1",
+  "url": "https://github.com/nnssti/Cubelight-Launcher/releases/download/v1.2.1/Cubelight%20Setup%201.2.1.exe",
+  "notes": "Cubelight 1.2.1 — custom blue installer, blocky pine banner scenes, tray notification instead of silent hide, update system via GitHub, removed fix-cubelight-icon-cache.bat from the package."
+}
