@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Releases — Cubelight Launcher</title>
+<meta name="description" content="Every Cubelight Launcher release with full notes — pulled live from GitHub Releases.">
+<link rel="icon" href="assets/app-icon.png" type="image/png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="stars">
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/app-icon.png" alt="Cubelight icon"><span class="name">Cube<span>light</span></span></a>
+    <div class="spacer"></div>
+    <a class="link optional" href="index.html">Home</a>
+    <a class="link active" href="releases.html">Releases</a>
+    <a class="btn primary small" href="https://github.com/nnssti/Cubelight-Launcher/releases/latest">Download</a>
+  </div>
+</header>
+
+<main>
+<section style="padding-top:48px">
+  <div class="wrap">
+    <p class="eyebrow">Changelog</p>
+    <h1 class="section-title" style="font-size:34px">Releases</h1>
+    <p class="section-sub">Every version of Cubelight Launcher — the list is fetched live from <a href="https://github.com/nnssti/Cubelight-Launcher/releases" style="color:var(--accent)">GitHub Releases</a>, so it is always up to date.</p>
+    <div class="releases" id="releases-list"><div class="loading">Loading releases from GitHub…</div></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot-wrap">
+    <span>Cubelight Launcher — MIT © Cubelight Project.<br>Not affiliated with Mojang / Microsoft. Minecraft is a trademark of Mojang AB.</span>
+    <span><a href="index.html">Home</a> · <a href="https://github.com/nnssti/Cubelight-Launcher/releases">All releases &amp; assets</a> · <a href="https://github.com/nnssti/Cubelight-Launcher">GitHub</a></span>
+  </div>
+</footer>
+
+<script>
+/* Releases are loaded live from the GitHub API — upload a new release and this
+   page shows it automatically. Falls back to a baked-in list if the API is
+   unreachable (offline view, rate limit). */
+(function () {
+  var API = 'https://api.github.com/repos/nnssti/Cubelight-Launcher/releases?per_page=20';
+  var VERSION_PAGES = { 'v1.2.1': 'release-v1.2.1.html', 'v1.1.0': 'release-1.1.0.html', '1.1.0': 'release-1.1.0.html', 'v1.0.2': 'release-v1.0.2.html', '1.2.0': 'release-1.2.0.html' };
+  var FALLBACK = [
+    { tag: 'v1.2.1', name: 'Cubelight Launcher v1.2.1', date: '2026-11-13', notes: 'In-app updates, animated banner scenes, tray notification, NSIS installer restored.' },
+    { tag: '1.2.0', name: 'Cubelight Launcher  v1.2.0', date: '2026-10-24', notes: 'Stability & polish on the v1.1.x line, following the mod-description translation release.' },
+    { tag: '1.1.0', name: 'Cubelight Launcher v1.1.0', date: '2026-11-13', notes: 'Automatic translation of mod descriptions (MyMemory, cached) in 9 languages; removed the custom cursor.' },
+    { tag: 'v1.0.2', name: 'Cubelight Launcher v1.0.2', date: '2026-10-15', notes: 'The original: version library, one-click installs, real Java detection, modpacks, mod store, skins, screenshots and offline play.' }
+  ];
+
+  var list = document.getElementById('releases-list');
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function renderItem(item) {
+    var tag = item.tag;
+    var name = item.name || ('Cubelight Launcher ' + tag);
+    var notes = (item.notes || '').trim().split(/\n+/).filter(function (l) { return l.trim(); })[0] || '';
+    var page = VERSION_PAGES[tag];
+    var latest = item.index === 0;
+    var card = document.createElement('article');
+    card.className = 'rel' + (latest ? ' latest' : '');
+    var downloads = item.assetUrl
+      ? '<a class="btn small primary" href="' + escapeHtml(item.assetUrl) + '">Download</a>'
+      : '<a class="btn small" href="https://github.com/nnssti/Cubelight-Launcher/releases">Download</a>';
+    var more = page
+      ? '<a class="btn small ghost" href="' + page + '">Read full notes →</a>'
+      : '<a class="btn small ghost" href="https://github.com/nnssti/Cubelight-Launcher/releases/tag/' + encodeURIComponent(tag) + '">Read on GitHub →</a>';
+    card.innerHTML =
+      '<div><span class="tag' + (latest ? ' new' : '') + '">' + escapeHtml(tag) + '</span>' + (latest ? '<div class="date">LATEST</div>' : '<div class="date">' + escapeHtml(item.date || '') + '</div>') + '</div>' +
+      '<div><h3>' + escapeHtml(name) + '</h3>' + (notes ? '<p>' + escapeHtml(notes) + '</p>' : '') + '<div class="date">' + escapeHtml(item.date || '') + '</div></div>' +
+      '<div class="rel-actions">' + downloads + more + '</div>';
+    return card;
+  }
+
+  function render(items) {
+    list.innerHTML = '';
+    items.forEach(function (item, i) { item.index = i; list.appendChild(renderItem(item)); });
+  }
+
+  function fallback() {
+    render(FALLBACK.map(function (f) {
+      return { tag: f.tag, name: f.name, notes: f.notes, date: f.date, assetUrl: 'https://github.com/nnssti/Cubelight-Launcher/releases/download/' + encodeURIComponent(f.tag) + '/CubelightSetup-' + f.tag.replace(/^v/, '') + '.exe' };
+    }));
+  }
+
+  fetch(API, { headers: { Accept: 'application/vnd.github+json' } })
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (releases) {
+      if (!Array.isArray(releases) || releases.length === 0) throw new Error('empty');
+      var items = releases
+        .filter(function (r) { return r && !r.draft; })
+        .map(function (r) {
+          var asset = (r.assets || []).find(function (a) { return /cubelightsetup.*\.exe$/i.test(a.name || ''); });
+          return {
+            tag: r.tag_name,
+            name: r.name,
+            notes: (r.body || '').trim(),
+            date: (r.published_at || '').substring(0, 10),
+            assetUrl: asset ? asset.browser_download_url : null
+          };
+        });
+      render(items);
+    })
+    .catch(fallback);
+})();
+</script>
+</body>
+</html>
