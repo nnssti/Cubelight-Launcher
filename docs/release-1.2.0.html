@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cubelight Launcher  v1.2.0 — Release notes</title>
-<meta name="description" content="Cubelight Launcher v1.2.0: stability and polish on top of v1.1.0, preparing the in-app update path that lands in v1.2.1.">
+<meta name="description" content="What's new in Cubelight Launcher v1.2.0: uninstall moved to Danger zone, modpack images read from the zip (pack.png / icon / logo), manifest keeps the imagePath, and the 'Java Edition not owned' error is suppressed across translations.">
 <link rel="icon" href="assets/app-icon.png" type="image/png">
 <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -23,7 +23,7 @@
 <main>
 <section class="version-hero">
   <div class="wrap">
-    <p class="crumb"><a href="releases.html">Releases</a> / 1.2.0</p>
+    <p class="crumb"><a href="releases.html">Releases</a> / 1.2.0 <span style="color:var(--muted)">· pre-release</span></p>
     <h1 class="release">Cubelight Launcher <span class="b">v1.2.0</span></h1>
     <div style="display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap">
       <span class="tag">1.2.0</span>
@@ -40,9 +40,12 @@
     <div class="release-body">
       <h2>What's new</h2>
       <ul>
-        <li>Stability &amp; polish on top of v1.1.0 (which added automatic translation of mod descriptions).</li>
-        <li>Ships the groundwork that v1.2.1 builds on: the in-app update flow, the banner scenes and the installer reliability pass.</li>
+        <li><strong>Uninstaller moved from About → Danger zone</strong> — uninstall lives where uninstall belongs now.</li>
+        <li><strong>Modpack images straight from the zip</strong> — the launcher reads <code>pack.png</code> / icon / logo from the modpack archive and saves it as <code>modpack-image</code>, so packs show proper artwork.</li>
+        <li><strong>Manifest preserved</strong> — the <code>imagePath</code> survives when the modpack is loaded, so the icon sticks around.</li>
+        <li><strong>“This Microsoft account does not own Minecraft: Java Edition” suppressed everywhere</strong> — the noisy false-positive error is silenced in all supported languages via i18n.</li>
       </ul>
+      <p class="meta" style="margin-top:10px">Status: pre-release — login verified via settings; full online session confirmed with a Microsoft account in 1.2.0.</p>
 
       <h2>Upgrading</h2>
       <p>Install this setup over your existing Cubelight — settings, accounts and modpacks carry over. For most people, jumping straight to <a href="release-v1.2.1.html">v1.2.1</a> is the better move.</p>
