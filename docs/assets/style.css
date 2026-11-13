@@ -168,3 +168,24 @@ footer a:hover { text-decoration: underline; }
   .features { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; }
 }
+
+/* ---- custom scrollbar ---- */
+:root { scrollbar-color: #4da3ff #0b1624; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0b1624; border-left: 1px solid rgba(77,163,255,.15); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #4da3ff 0%, #2f80ed 100%); border-radius: 999px; border: 2px solid #0b1624; box-shadow: 0 0 12px rgba(77,163,255,.45); }
+::-webkit-scrollbar-thumb:hover { box-shadow: 0 0 18px rgba(77,163,255,.7); }
+::-webkit-scrollbar-corner { background: #0b1624; }
+
+/* ---- language dropdown ---- */
+select.lang-select { height: 38px; padding: 0 34px 0 14px; border-radius: 10px; border: 1px solid var(--line); background: rgba(22,50,79,.9); color: var(--text); font-size: 12px; font-weight: 700; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%2399bcd8' d='M1 1l5 5 5-5'/></svg>"); background-repeat: no-repeat; background-position: right 12px center; }
+select.lang-select:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+select.lang-select option { background: #0f1b2a; color: var(--text); }
+
+/* ---- watch section ---- */
+.watch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 24px; }
+.media-card { background: linear-gradient(160deg, rgba(15,27,42,.94), rgba(9,17,28,.97)); border: 1px solid var(--line); border-radius: 14px; padding: 12px; box-shadow: 0 14px 40px rgba(0,0,0,.35); }
+.media-card video { width: 100%; aspect-ratio: 16/9; display: block; border-radius: 10px; background: #000; }
+.media-card figcaption { display: flex; justify-content: space-between; gap: 8px; padding: 10px 6px 2px; font-size: 12px; color: var(--muted); }
+.media-card figcaption b { color: var(--text-bright); }
+@media (max-width: 900px) { .watch-grid { grid-template-columns: 1fr; } }
