@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cubelight Launcher — A modern, original Minecraft launcher for Windows</title>
+<meta name="description" content="Cubelight Launcher is a modern, original Windows launcher for Minecraft: modpacks, mod store, skins, Java management and accounts. Free and open source.">
+<link rel="icon" href="assets/app-icon.png" type="image/png">
+<style>
+  :root {
+    --bg: #071322;
+    --panel: #0f1b2a;
+    --line: rgba(77, 163, 255, 0.18);
+    --accent: #4da3ff;
+    --accent-strong: #2f80ed;
+    --muted: #8da4bd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: radial-gradient(1200px 600px at 70% -120px, rgba(77, 163, 255, 0.16), transparent 60%),
+                radial-gradient(800px 500px at -10% 480px, rgba(77, 163, 255, 0.10), transparent 55%),
+                var(--bg);
+    color: #e8f1fa;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .stars::after {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      radial-gradient(1.3px 1.3px at 12% 22%, rgba(255,255,255,.7) 50%, transparent 50%),
+      radial-gradient(1.1px 1.1px at 33% 9%,  rgba(255,255,255,.55) 50%, transparent 50%),
+      radial-gradient(1.6px 1.6px at 58% 30%, rgba(255,255,255,.8) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at 74% 12%,  rgba(255,255,255,.6) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 88% 44%,  rgba(255,255,255,.75) 50%, transparent 50%),
+      radial-gradient(1.1px 1.1px at 22% 62%,  rgba(255,255,255,.5) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 63% 70%,  rgba(255,255,255,.65) 50%, transparent 50%);
+    opacity: .8;
+  }
+  .wrap { width: min(1160px, 94vw); margin: 0 auto; position: relative; z-index: 1; }
+  header.nav {
+    position: sticky; top: 0; z-index: 20;
+    backdrop-filter: blur(10px);
+    background: rgba(7, 19, 34, 0.72);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; align-items: center; gap: 18px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .brand img { width: 36px; height: 36px; image-rendering: pixelated; }
+  .brand .name { font-weight: 800; font-size: 17px; letter-spacing: .3px; color: #f0f6ff; }
+  .brand .name span { color: var(--accent); }
+  .nav .spacer { flex: 1; }
+  .nav a.link { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; }
+  .nav a.link:hover { color: #cfe6ff; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 46px; padding: 0 22px; border-radius: 12px;
+    border: 1px solid rgba(77,163,255,.25);
+    background: rgba(22, 50, 79, .9);
+    color: #cfe0ff; font-size: 14px; font-weight: 700;
+    text-decoration: none; cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+  .btn.primary {
+    background: linear-gradient(160deg, #1f6feb 0%, #2f80ed 55%, #4da3ff 100%);
+    border-color: var(--accent); color: #fff;
+    box-shadow: 0 10px 28px rgba(47,128,237,.4), inset 0 1px 0 rgba(255,255,255,.18);
+  }
+  .btn.primary:hover { box-shadow: 0 14px 34px rgba(77,163,255,.5), inset 0 1px 0 rgba(255,255,255,.22); }
+
+  .hero { padding: 56px 0 28px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+  .eyebrow { font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
+  h1 { font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; font-weight: 900; color: #f4f9ff; letter-spacing: -0.5px; }
+  h1 .b { background: linear-gradient(180deg, #cfeaff 0%, #4da3ff 65%, #2f80ed 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { margin: 18px 0 26px; color: #9db6d2; font-size: 16.5px; max-width: 46ch; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .meta { margin-top: 14px; font-size: 12px; color: var(--muted); font-family: Consolas, "Cascadia Code", monospace; }
+
+  .shot-frame {
+    border-radius: 16px; border: 1px solid var(--line);
+    background: linear-gradient(160deg, rgba(15,27,42,.9), rgba(9,17,28,.95));
+    box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 70px rgba(77,163,255,.15);
+    padding: 10px;
+    transform: rotate(.6deg);
+  }
+  .shot-frame img { width: 100%; display: block; border-radius: 10px; }
+  .shot-caption { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px 2px; font-size: 11px; color: var(--muted); font-family: Consolas, monospace; }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url('assets/hero.png'); background-size: cover; background-position: center bottom; opacity: .55;
+    mask-image: linear-gradient(180deg, transparent 0%, black 30%, black 75%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 30%, black 75%, transparent 100%);
+  }
+
+  section { padding: 64px 0; position: relative; }
+  .section-title { font-size: 28px; font-weight: 800; color: #f0f6ff; letter-spacing: -0.3px; }
+  .section-sub { color: var(--muted); margin-top: 6px; font-size: 14px; }
+
+  .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; }
+  .card {
+    background: linear-gradient(160deg, rgba(15,27,42,.92), rgba(9,17,28,.96));
+    border: 1px solid var(--line); border-radius: 14px; padding: 18px;
+    box-shadow: 0 14px 40px rgba(0,0,0,.35);
+  }
+  .card h3 { font-size: 15px; color: #e8f3ff; margin-bottom: 6px; }
+  .card p { font-size: 12.5px; color: #93abcd; }
+  .icon { font-size: 20px; margin-bottom: 8px; }
+
+  .releases { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+  .rel { display: grid; grid-template-columns: 110px 1fr auto; gap: 18px; align-items: center;
+         padding: 18px; border-radius: 14px; border: 1px solid var(--line);
+         background: linear-gradient(160deg, rgba(15,27,42,.92), rgba(9,17,28,.96)); }
+  .tag { font-family: Consolas, monospace; font-size: 13px; color: #04101f; background: linear-gradient(180deg,#9be0ff,#4da3ff);
+         padding: 4px 10px; border-radius: 8px; font-weight: 700; text-align: center; }
+  .rel.latest { border-color: rgba(77,163,255,.45); box-shadow: 0 0 0 1px rgba(77,163,255,.25), 0 18px 50px rgba(47,128,237,.18); }
+  .rel h3 { font-size: 15px; color: #f0f6ff; }
+  .rel p { font-size: 12.5px; color: #93abcd; margin-top: 4px; }
+  .rel .date { font-size: 11px; color: var(--muted); font-family: Consolas, monospace; margin-top: 6px; }
+  .rel .btn { height: 40px; font-size: 13px; white-space: nowrap; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 12px; }
+  footer a { color: #cfe6ff; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .foot-wrap { display: flex; gap: 14px; justify-content: space-between; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .features { grid-template-columns: repeat(2, 1fr); }
+    .rel { grid-template-columns: 1fr; }
+    .nav a.link.optional { display: none; }
+  }
+</style>
+</head>
+<body class="stars">
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="assets/app-icon.png" alt="Cubelight icon">
+      <span class="name">Cube<span>light</span></span>
+    </a>
+    <div class="spacer"></div>
+    <a class="link optional" href="#features">Features</a>
+    <a class="link optional" href="#releases">Releases</a>
+    <a class="btn primary" href="https://github.com/nnssti/Cubelight-Launcher/releases/latest" style="height:38px;font-size:13px;">Download</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Cubelight Launcher</p>
+      <h1>The <span class="b">original</span><br>Windows launcher<br>for Minecraft.</h1>
+      <p class="sub">Real modpacks, a modern mod store, automatic Java installs, skins, screenshots, backups — and a blue Cubelight world that actually feels like home. Free, open source, and fast.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/nnssti/Cubelight-Launcher/releases/latest">⬇ Download for Windows</a>
+        <a class="btn" href="https://github.com/nnssti/Cubelight-Launcher">GitHub →</a>
+      </div>
+      <p class="meta">v1.2.1 · Windows 10/11 · MIT License · Free forever</p>
+    </div>
+    <figure class="shot-frame">
+      <img src="assets/shot-home.png" alt="Cubelight Launcher home screen">
+      <figcaption class="shot-caption"><span>Cubelight Launcher — Home</span><span>26.3 · ready</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2 class="section-title">Everything you need to play.</h2>
+    <p class="section-sub">A complete launcher, written from scratch. No bloat, no telemetry you didn't ask for.</p>
+    <div class="features">
+      <div class="card"><div class="icon">📦</div><h3>Modpacks &amp; Mod Store</h3><p>Browse, install and update modpacks and individual mods. Cubelight keeps them isolated from your main setup.</p></div>
+      <div class="card"><div class="icon">☕</div><h3>Java, handled</h3><p>Cubelight finds or installs a compatible Java runtime per version automatically. No PATH editing, no drama.</p></div>
+      <div class="card"><div class="icon">🔑</div><h3>Sign in your way</h3><p>Microsoft account sign-in for Java Edition owners, plus offline play for fun with friends. No fake auth, no tricks.</p></div>
+      <div class="card"><div class="icon">🎨</div><h3>Skins &amp; Screenshots</h3><p>Skins gallery with in-game preview and a screenshot manager — all inside the launcher.</p></div>
+      <div class="card"><div class="icon">🌍</div><h3>Worlds &amp; Backups</h3><p>Manage worlds, and make backups before experimenting — restoring them takes one click.</p></div>
+      <div class="card"><div class="icon">🔄</div><h3>In-app updates</h3><p>New Release? Settings → About → Updates. It downloads and installs itself quietly.</p></div>
+      <div class="card"><div class="icon">💎</div><h3>Cubelight identity</h3><p>Blocky visuals, animated banner scenes (dawn → storm → snow), blue glow — a look all its own.</p></div>
+      <div class="card"><div class="icon">🛡️</div><h3>Per-user, no admin</h3><p>Installs for you without admin rights. Remove it any time from Apps &amp; Features.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="releases">
+  <div class="wrap">
+    <h2 class="section-title">All releases</h2>
+    <p class="section-sub">Every version, same trusty NSIS installer, straight from GitHub Releases.</p>
+    <div class="releases">
+
+      <div class="rel latest">
+        <div><span class="tag">v1.2.1</span><div class="date">2026-11-13</div></div>
+        <div>
+          <h3>Cubelight Launcher v1.2.1 — updates, banner &amp; tray</h3>
+          <p>In-app updates (Check for updates → auto install), NSIS setup restored (per-user, no admin), animated banner scenes with blocky parallax pines, tray notification instead of silent hide, and honest online-play feedback for accounts without Java Edition.</p>
+        </div>
+        <a class="btn primary" href="https://github.com/nnssti/Cubelight-Launcher/releases/download/v1.2.1/CubelightSetup-1.2.1.exe">Download</a>
+      </div>
+
+      <div class="rel">
+        <div><span class="tag">1.2.0</span><div class="date">2026-10-24</div></div>
+        <div>
+          <h3>Cubelight Launcher v1.2.0</h3>
+          <p>Stability &amp; polish release built on the v1.1.x line, following the translated mod descriptions update.</p>
+        </div>
+        <a class="btn" href="https://github.com/nnssti/Cubelight-Launcher/releases/download/1.2.0/CubelightSetup-1.2.0.exe">Download</a>
+      </div>
+
+      <div class="rel">
+        <div><span class="tag">1.1.0</span><div class="date">2026-11-13*</div></div>
+        <div>
+          <h3>Cubelight Launcher v1.1.0</h3>
+          <p>Automatic translation for mod descriptions (MyMemory, cached on disk) across ar / es / fr / de / pt / tr / ru / zh / ja, and removal of the old custom cursor.</p>
+        </div>
+        <a class="btn" href="https://github.com/nnssti/Cubelight-Launcher/releases/download/1.1.0/CubelightSetup-1.1.0.exe">Download</a>
+      </div>
+
+      <div class="rel">
+        <div><span class="tag">v1.0.2</span><div class="date">2026-10-15</div></div>
+        <div>
+          <h3>Cubelight Launcher v1.0.2</h3>
+          <p>The original: version library, one-click installs, real Java detection, modpacks, mod store, skins, screenshots and offline play.</p>
+        </div>
+        <a class="btn" href="https://github.com/nnssti/Cubelight-Launcher/releases/download/v1.0.2/CubelightSetup-1.0.2.exe">Download</a>
+      </div>
+
+    </div>
+    <p class="meta" style="margin-top:14px">* 1.1.0 was re-published alongside 1.2.1 on the same date; both point at the same source state.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot-wrap">
+    <span>Cubelight Launcher — MIT © Cubelight Project.<br>Not affiliated with Mojang / Microsoft. Minecraft is a trademark of Mojang AB.</span>
+    <span><a href="https://github.com/nnssti/Cubelight-Launcher">GitHub repository</a> · <a href="https://github.com/nnssti/Cubelight-Launcher/releases">All releases &amp; changelog</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
