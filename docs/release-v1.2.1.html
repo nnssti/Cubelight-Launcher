@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cubelight Launcher v1.2.1 — Release notes</title>
+<meta name="description" content="What's new in Cubelight Launcher v1.2.1: in-app updates, NSIS setup restored, animated banner scenes, tray notification, honest online-play feedback and installer reliability.">
+<link rel="icon" href="assets/app-icon.png" type="image/png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="stars">
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/app-icon.png" alt="Cubelight icon"><span class="name">Cube<span>light</span></span></a>
+    <div class="spacer"></div>
+    <a class="link optional" href="index.html">Home</a>
+    <a class="link" href="releases.html">Releases</a>
+    <a class="btn primary small" href="https://github.com/nnssti/Cubelight-Launcher/releases/download/v1.2.1/CubelightSetup-1.2.1.exe">⬇ Download</a>
+  </div>
+</header>
+
+<main>
+<section class="version-hero">
+  <div class="wrap">
+    <p class="crumb"><a href="releases.html">Releases</a> / v1.2.1 <span style="color:var(--accent)">· Latest</span></p>
+    <h1 class="release">Cubelight Launcher <span class="b">v1.2.1</span></h1>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap">
+      <span class="tag new">v1.2.1</span>
+      <span class="meta">Published 2026-11-13</span>
+    </div>
+
+    <div class="spec-grid">
+      <div class="spec"><div class="k">Asset</div><div class="v">CubelightSetup-1.2.1.exe</div></div>
+      <div class="spec"><div class="k">Size</div><div class="v">≈ 75 MB</div></div>
+      <div class="spec"><div class="k">Installer</div><div class="v">NSIS · per-user</div></div>
+      <div class="spec"><div class="k">Platform</div><div class="v">Windows 10/11</div></div>
+    </div>
+
+    <div class="release-body">
+      <h2>What's new</h2>
+      <ul>
+        <li><strong>In-app updates</strong> — Settings → About → Updates. A newer release is downloaded and installed silently, no more manual downloads.</li>
+        <li><strong>NSIS setup restored</strong> — wizard-based installer, installs per-user (no admin rights), creates Start Menu + Desktop shortcuts, shows up in Apps &amp; Features for easy removal.</li>
+        <li><strong>Animated banner scenes</strong> — the home banner now lives: blocky parallax pines under dawn / noon / sunset / night / storm / snow, ~44s cycle.</li>
+        <li><strong>Tray notification instead of silent hide</strong> — pressing Alt+F4 no longer makes the launcher vanish; you get told it is still running and where to find it.</li>
+        <li><strong>Honest online-play feedback</strong> — accounts without a Java Edition profile see a clear error instead of a silent offline fallback, and get a badge in Settings.</li>
+        <li><strong>Installer reliability</strong> — ffmpeg.dll kept; the icon-cache repair batch file was removed from the package.</li>
+      </ul>
+
+      <h2>Upgrading from v1.0.2 / v1.1.0</h2>
+      <p><strong>Option A (recommended):</strong> run this setup directly — it replaces the old install cleanly, your settings, accounts and modpacks carry over.</p>
+      <p><strong>Option B:</strong> inside the launcher, Settings → About → Updates → Check for updates → Update now. (v1.0.2 and v1.1.0 need one extra line in the update feed config — see the release notes or the project README.)</p>
+
+      <h2>Screenshots</h2>
+      <figure class="shot-frame" style="margin-top:8px">
+        <img src="assets/shot-home.png" alt="v1.2.1 home screen">
+        <figcaption class="shot-caption"><span>Home — 26.3, online, banner scene</span><span>v1.2.1</span></figcaption>
+      </figure>
+      <figure class="shot-frame" style="margin-top:16px">
+        <img src="assets/shots/shot-settings.png" alt="v1.2.1 settings">
+        <figcaption class="shot-caption"><span>Settings → General — launcher update feed, tray &amp; startup options</span><span>v1.2.1</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="cta" style="padding-bottom:20px">
+      <a class="btn primary" href="https://github.com/nnssti/Cubelight-Launcher/releases/download/v1.2.1/CubelightSetup-1.2.1.exe">⬇ Download CubelightSetup-1.2.1.exe</a>
+      <a class="btn" href="releases.html">← All releases</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot-wrap">
+    <span>Cubelight Launcher — MIT © Cubelight Project.<br>Not affiliated with Mojang / Microsoft. Minecraft is a trademark of Mojang AB.</span>
+    <span><a href="index.html">Home</a> · <a href="releases.html">Releases</a> · <a href="https://github.com/nnssti/Cubelight-Launcher">GitHub</a></span>
+  </div>
+</footer>
+</body>
+</html>
