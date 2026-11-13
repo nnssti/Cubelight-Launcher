@@ -46,4 +46,4 @@ We believe in full transparency with our users. Here are the current known issue
 
 ## 📄 License & Attribution
 
-Created and developed by **NNSSTi**.
+Created and developed by **opencode**.
