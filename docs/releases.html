@@ -14,29 +14,33 @@
   <div class="wrap">
     <a class="brand" href="index.html"><img src="assets/app-icon.png" alt="Cubelight icon"><span class="name">Cube<span>light</span></span></a>
     <div class="spacer"></div>
-    <a class="link optional" href="index.html">Home</a>
-    <a class="link active" href="releases.html">Releases</a>
-    <a class="btn primary small" href="https://github.com/nnssti/Cubelight-Launcher/releases/latest">Download</a>
+    <a class="link optional" href="index.html" data-i18n="nav.home">Home</a>
+    <a class="link optional" href="features.html" data-i18n="nav.features">Features</a>
+    <a class="link active" href="releases.html" data-i18n="nav.releases">Releases</a>
+    <select class="lang-select" aria-label="Language"></select>
+    <a class="btn primary small" href="https://github.com/nnssti/Cubelight-Launcher/releases/latest" data-i18n="nav.download">Download</a>
   </div>
 </header>
 
 <main>
 <section style="padding-top:48px">
   <div class="wrap">
-    <p class="eyebrow">Changelog</p>
-    <h1 class="section-title" style="font-size:34px">Releases</h1>
-    <p class="section-sub">Every version of Cubelight Launcher — the list is fetched live from <a href="https://github.com/nnssti/Cubelight-Launcher/releases" style="color:var(--accent)">GitHub Releases</a>, so it is always up to date.</p>
-    <div class="releases" id="releases-list"><div class="loading">Loading releases from GitHub…</div></div>
+    <p class="eyebrow" data-i18n="releases.eyebrow">Changelog</p>
+    <h1 class="section-title" style="font-size:34px" data-i18n="releases.title">Releases</h1>
+    <p class="section-sub" data-i18n="releases.sub">Every version of Cubelight Launcher — this list is fetched live from GitHub Releases, so it is always up to date.</p>
+    <div class="releases" id="releases-list"><div class="loading" data-i18n="releases.loading">Loading releases from GitHub…</div></div>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap foot-wrap">
-    <span>Cubelight Launcher — MIT © Cubelight Project.<br>Not affiliated with Mojang / Microsoft. Minecraft is a trademark of Mojang AB.</span>
-    <span><a href="index.html">Home</a> · <a href="https://github.com/nnssti/Cubelight-Launcher/releases">All releases &amp; assets</a> · <a href="https://github.com/nnssti/Cubelight-Launcher">GitHub</a></span>
+    <span data-i18n="footer.copy" data-i18n-html="true">Cubelight Launcher — MIT © Cubelight Project.<br>Not affiliated with Mojang / Microsoft.</span>
+    <span><a href="index.html" data-i18n="footer.home">Home</a> · <a href="https://github.com/nnssti/Cubelight-Launcher/releases" data-i18n="footer.releases">Releases</a> · <a href="https://github.com/nnssti/Cubelight-Launcher" data-i18n="footer.github">GitHub</a></span>
   </div>
 </footer>
+<script src="assets/i18n.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function () { CI18N.mount(); });</script>
 
 <script>
 /* Releases are loaded live from the GitHub API — upload a new release and this
@@ -44,9 +48,9 @@
    unreachable (offline view, rate limit). */
 (function () {
   var API = 'https://api.github.com/repos/nnssti/Cubelight-Launcher/releases?per_page=20';
-  var VERSION_PAGES = { 'v1.2.1': 'release-v1.2.1.html', 'v1.1.0': 'release-1.1.0.html', '1.1.0': 'release-1.1.0.html', 'v1.0.2': 'release-v1.0.2.html', '1.2.0': 'release-1.2.0.html' };
+  var VERSION_PAGES = { 'v1.3.0': 'release-v1.3.0.html', 'v1.2.1': 'release-v1.2.1.html', 'v1.1.0': 'release-1.1.0.html', '1.1.0': 'release-1.1.0.html', 'v1.0.2': 'release-v1.0.2.html', '1.2.0': 'release-1.2.0.html' };
   var FALLBACK = [
-    { tag: 'v1.2.1', name: 'Cubelight Launcher v1.2.1', date: '2026-11-13', notes: 'In-app updates, animated banner scenes, tray notification, NSIS installer restored.' },
+    { tag: 'v1.3.0', name: 'Cubelight Launcher v1.3.0', date: '2026-11-14', notes: 'Bug fixes: duplicate mods merged by mod id, modpack delete removes its files, full About/Update translations.' },
     { tag: '1.2.0', name: 'Cubelight Launcher  v1.2.0', date: '2026-10-24', notes: 'Stability & polish on the v1.1.x line, following the mod-description translation release.' },
     { tag: '1.1.0', name: 'Cubelight Launcher v1.1.0', date: '2026-11-13', notes: 'Automatic translation of mod descriptions (MyMemory, cached) in 9 languages; removed the custom cursor.' },
     { tag: 'v1.0.2', name: 'Cubelight Launcher v1.0.2', date: '2026-10-15', notes: 'The original: version library, one-click installs, real Java detection, modpacks, mod store, skins, screenshots and offline play.' }
