@@ -1,5 +1,5 @@
 {
-  "version": "1.2.1",
-  "url": "https://github.com/nnssti/Cubelight-Launcher/releases/download/v1.2.1/CubelightSetup-1.2.1.exe",
-  "notes": "Cubelight 1.2.1 - NSIS setup, banner scene with blocky pines, tray notification, in-app updates, ffmpeg.dll kept, icon-cache bat removed"
+  "version": "1.3.0",
+  "url": "https://github.com/nnssti/Cubelight-Launcher/releases/download/v1.3.0/CubelightSetup-1.3.0.exe",
+  "notes": "Cubelight 1.3.0 - bug fixes: duplicate mods merged by mod id, modpack deletion now removes files, downloads when updating no longer stack old/new jars, full About/Updates translations for fr/de/pt/tr/ru/zh/ja."
 }
