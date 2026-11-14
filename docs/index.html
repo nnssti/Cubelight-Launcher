@@ -14,60 +14,41 @@
   <div class="wrap">
     <a class="brand" href="index.html"><img src="assets/app-icon.png" alt="Cubelight icon"><span class="name">Cube<span>light</span></span></a>
     <div class="spacer"></div>
-    <a class="link optional" href="releases.html">Releases</a>
-    <a class="link optional" href="https://github.com/nnssti/Cubelight-Launcher">GitHub</a>
-    <a class="btn primary small" href="https://github.com/nnssti/Cubelight-Launcher/releases/latest">Download</a>
+    <a class="link optional" href="features.html" data-i18n="nav.features">Features</a>
+    <a class="link optional" href="releases.html" data-i18n="nav.releases">Releases</a>
+    <a class="link optional" href="https://github.com/nnssti/Cubelight-Launcher" data-i18n="nav.github">GitHub</a>
+    <select class="lang-select" aria-label="Language"></select>
+    <a class="btn primary small" href="https://github.com/nnssti/Cubelight-Launcher/releases/latest" data-i18n="nav.download">Download</a>
   </div>
 </header>
 
 <main>
-<section class="hero">
+<section class="hero" style="min-height: 82vh; display:flex; align-items:center">
   <div class="hero-bg"></div>
-  <div class="wrap">
+  <div class="wrap" style="padding: 30px 0">
     <div>
-      <p class="eyebrow">Cubelight Launcher</p>
-      <h1>The <span class="b">original</span><br>Windows launcher<br>for Minecraft.</h1>
-      <p class="sub">Real modpacks, a modern mod store, automatic Java installs, skins, screenshots, backups — and a blue Cubelight world that actually feels like home. Free, open source, and fast.</p>
+      <p class="eyebrow" data-i18n="home.eyebrow">The official site</p>
+      <h1 data-i18n="home.title" data-i18n-html="true">The <b>original</b><br>Windows launcher<br>for Minecraft.</h1>
+      <p class="sub" data-i18n="home.sub">Real modpacks, a modern mod store, automatic Java installs, skins, screenshots and backups — and a blue Cubelight world that actually feels like home.</p>
       <div class="cta">
-        <a class="btn primary" href="https://github.com/nnssti/Cubelight-Launcher/releases/latest">⬇ Download for Windows</a>
-        <a class="btn" href="releases.html">All releases →</a>
+        <a class="btn primary" href="https://github.com/nnssti/Cubelight-Launcher/releases/latest" data-i18n="home.ctaDownload">⬇ Download</a>
+        <a class="btn" href="features.html" data-i18n="home.ctaFeatures">See features →</a>
       </div>
-      <p class="meta" style="margin-top:14px">v1.2.1 · Windows 10/11 · MIT License · Free forever</p>
+      <p class="meta" style="margin-top:14px" data-i18n="home.stat">v1.3.0 · Windows 10/11 · MIT License · Free forever</p>
     </div>
     <figure class="shot-frame">
       <img src="assets/shot-home.png" alt="Cubelight Launcher home screen">
-      <figcaption class="shot-caption"><span>Home — 26.3 ready to play</span><span>v1.2.1</span></figcaption>
+      <figcaption class="shot-caption"><span data-i18n="home.cap">Home — 26.3 ready to play</span><span>v1.3.0</span></figcaption>
     </figure>
   </div>
 </section>
 
-<section id="gallery">
+<section>
   <div class="wrap">
-    <h2 class="section-title">See it in action</h2>
-    <p class="section-sub">Real screenshots from the latest build — Home, Versions, Skins, Mod Store and Settings.</p>
-    <div class="gallery">
-      <button class="shot" data-full="assets/shot-home.png" data-caption="Home — pick a version, hit Play"><img src="assets/shot-home.png" alt="Home"><span class="tag">Home</span></button>
-      <button class="shot" data-full="assets/shots/shot-versions.png" data-caption="Versions — everything from snapshots to very old releases"><img src="assets/shots/shot-versions.png" alt="Versions"><span class="tag">Versions</span></button>
-      <button class="shot" data-full="assets/shots/shot-mods.png" data-caption="Mod Store — mods and modpacks with one-click install"><img src="assets/shots/shot-mods.png" alt="Mod Store"><span class="tag">Mod Store</span></button>
-      <button class="shot" data-full="assets/shots/shot-skins.png" data-caption="Skins — vanilla + your own, with in-app preview"><img src="assets/shots/shot-skins.png" alt="Skins"><span class="tag">Skins</span></button>
-      <button class="shot" data-full="assets/shots/shot-settings.png" data-caption="Settings — everything about the launcher in one place"><img src="assets/shots/shot-settings.png" alt="Settings"><span class="tag">Settings</span></button>
-    </div>
-  </div>
-</section>
-
-<section id="features">
-  <div class="wrap">
-    <h2 class="section-title">Everything you need to play.</h2>
-    <p class="section-sub">A complete launcher, written from scratch. No bloat, no telemetry you didn't ask for.</p>
-    <div class="features">
-      <div class="card"><div class="icon">📦</div><h3>Modpacks &amp; Mod Store</h3><p>Browse, install and update modpacks and individual mods. Cubelight keeps them isolated from your main setup.</p></div>
-      <div class="card"><div class="icon">☕</div><h3>Java, handled</h3><p>Cubelight finds or installs a compatible Java runtime per version automatically. No PATH editing, no drama.</p></div>
-      <div class="card"><div class="icon">🔑</div><h3>Sign in your way</h3><p>Microsoft account sign-in for Java Edition owners, plus offline play. No fake auth, no tricks.</p></div>
-      <div class="card"><div class="icon">🎨</div><h3>Skins &amp; Screenshots</h3><p>Skins gallery with in-game preview and a screenshot manager — all inside the launcher.</p></div>
-      <div class="card"><div class="icon">🌍</div><h3>Worlds &amp; Backups</h3><p>Manage worlds, and make backups before experimenting — restoring takes one click.</p></div>
-      <div class="card"><div class="icon">🔄</div><h3>In-app updates</h3><p>New release? Settings → About → Updates. It downloads and installs itself quietly.</p></div>
-      <div class="card"><div class="icon">💎</div><h3>Cubelight identity</h3><p>Blocky visuals, animated banner scenes (dawn → storm → snow), blue glow — a look all its own.</p></div>
-      <div class="card"><div class="icon">🛡️</div><h3>Per-user, no admin</h3><p>Installs for you without admin rights. Remove any time from Apps &amp; Features.</p></div>
+    <div class="features" style="grid-template-columns: repeat(3, 1fr)">
+      <div class="card"><div class="icon">🪶</div><h3 data-i18n="home.pillar1.title">Free &amp; open source</h3><p data-i18n="home.pillar1.text">MIT-licensed. No subscriptions, no telemetry you did not ask for.</p></div>
+      <div class="card"><div class="icon">🎨</div><h3 data-i18n="home.pillar2.title">Original visuals</h3><p data-i18n="home.pillar2.text">Banner scenes, pixel-art artwork and a blue identity of its own.</p></div>
+      <div class="card"><div class="icon">🔄</div><h3 data-i18n="home.pillar3.title">Updates itself</h3><p data-i18n="home.pillar3.text">Settings → About → Updates. It downloads and installs quietly.</p></div>
     </div>
   </div>
 </section>
@@ -76,13 +57,13 @@
   <div class="wrap">
     <div class="card" style="display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-color:var(--line-strong)">
       <div>
-        <p class="eyebrow" style="margin-bottom:6px">Latest release</p>
-        <h3 style="font-size:22px;color:var(--text-bright)">v1.2.1 — updates, banner &amp; tray</h3>
-        <p class="section-sub" style="margin-top:6px">In-app updates, animated banner scenes, tray notification, NSIS installer restored.</p>
+        <p class="eyebrow" style="margin-bottom:6px" data-i18n="home.latest.label">Latest release</p>
+        <h3 style="font-size:22px;color:var(--text-bright)">v1.3.0 — bug fixes, clean mods &amp; translations</h3>
+        <p class="section-sub" style="margin-top:6px">Bug fixes: duplicate mods merged by mod id, modpack delete removes all files, full About/Update translations for 10 languages.</p>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn primary" href="release-v1.2.1.html">Read v1.2.1 notes →</a>
-        <a class="btn" href="releases.html">All releases</a>
+        <a class="btn primary" href="release-v1.3.0.html" data-i18n="home.latest.notes">Read v1.3.0 notes →</a>
+        <a class="btn" href="releases.html" data-i18n="home.allReleases">All releases →</a>
       </div>
     </div>
   </div>
@@ -91,32 +72,12 @@
 
 <footer>
   <div class="wrap foot-wrap">
-    <span>Cubelight Launcher — MIT © Cubelight Project.<br>Not affiliated with Mojang / Microsoft. Minecraft is a trademark of Mojang AB.</span>
-    <span><a href="releases.html">Releases</a> · <a href="https://github.com/nnssti/Cubelight-Launcher">GitHub</a> · <a href="release-v1.2.1.html">v1.2.1</a></span>
+    <span data-i18n="footer.copy" data-i18n-html="true">Cubelight Launcher — MIT © Cubelight Project.<br>Not affiliated with Mojang / Microsoft.</span>
+    <span><a href="index.html" data-i18n="footer.home">Home</a> · <a href="releases.html" data-i18n="footer.releases">Releases</a> · <a href="https://github.com/nnssti/Cubelight-Launcher" data-i18n="footer.github">GitHub</a></span>
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-label="Screenshot preview">
-  <button type="button" aria-label="Close">✕</button>
-  <img id="lightbox-img" alt="">
-  <p id="lightbox-cap"></p>
-</div>
-
-<script>
-  (function () {
-    var lb = document.getElementById('lightbox');
-    var img = document.getElementById('lightbox-img');
-    var cap = document.getElementById('lightbox-cap');
-    document.querySelectorAll('.shot').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        img.src = btn.getAttribute('data-full');
-        cap.textContent = btn.getAttribute('data-caption') || '';
-        lb.classList.add('open');
-      });
-    });
-    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.tagName === 'BUTTON') lb.classList.remove('open'); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
-  })();
-</script>
+<script src="assets/i18n.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function () { CI18N.mount(); });</script>
 </body>
 </html>
